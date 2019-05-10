@@ -1,0 +1,58 @@
+body {
+    background: url(nyc.jpg) no-repeat;
+    background-size: cover;
+    background-position: 25% 25%; 
+    margin-top: 50%;
+    }
+    
+    
+    #zipcode, #name, #income, #home, #processing {
+        display: flex;
+        flex-direction: column;
+        height: 10em;
+        align-items: center;
+        position: absolute;
+        top: 30%;
+        width: 100%;
+        font-family: Calibri;
+        color: green;
+    }
+    
+    #zipcode {
+        visibility: hidden;
+    }
+    #name {
+        visibility: hidden;
+    }
+    #income {
+        visibility: hidden;
+    }
+    #home {
+        visibility: hidden;
+    }
+    #processing{
+      visibility: hidden;
+    }
+    #seeResults{
+        border: none;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 12px;
+        font-family: Calibri;
+    }
+    #seeResults:hover{
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+
+    }
+    
+    input {
+        font-size: 1em;
+        font-weight: bold;
+        text-align: center;
+    }
+    
