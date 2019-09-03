@@ -1,47 +1,142 @@
 <!DOCTYPE html>
-   <head>
-        <link rel="stylesheet" href="style.css">
-   </head>
-   <title>ZipRank</title>
-   <body>
-   <div id='zipcode'>
 
-            <h1>Want to know where you stand financially vs your peers?</h1>
-            <h1> 🤔</h1>
-    
-            <form id='zipForm'>
-                <input class="zipcode-input" type="text" maxlength="5" placeholder="enter your zipcode here">
-            </form>
-            <div id=#userZip></div>
-        </div>
-        
-        <div id="name">
-            <h1>What is your name? 💁🏼‍</h1>
-            <form >
-            <input class="name-input" type="text" placeholder="enter your name here">
-            </form>
-        </div>
-    
-        <div id="income">
-                <h1>How much 💵 do you make a year?</h1>
-                <form>
-                <input class="income-input" type="text" placeholder="$$$">
-                </form>
-            </div>
-        
-        <div id="home">
-                    <h1>How much could you sell your 🏡 for today?</h1>
-                    <form>
-                    <input class="home-input" type="text" placeholder="$$$">
-                    </form>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Asap&display=swap" rel="stylesheet">
+    <!-- Spinner -->
+    <link href='//fonts.googleapis.com/css?family=Lato:900,400' rel='stylesheet' type='text/css'>
+    <!-- CSS Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<title>ZipRank</title>
+
+<body>
+    <div id='zipcode'>
+
+        <h1>Want to know where you stand financially vs your peers?</h1>
+        <!-- <h1> 🤔</h1> -->
+
+        <form id='zipForm'>
+            <input class="zipcode-input" class="form-control" type="text" maxlength="5"
+                placeholder="enter your zipcode">
+        </form>
+    </div>
+
+
+    <div id="name">
+        <h1>What is your name?</h1>
+        <form>
+            <input class="name-input" type="text" placeholder="enter your name">
+        </form>
+    </div>
+
+    <div id="income">
+        <h1>How much 💵 do you make a year?</h1>
+        <h5 class="hint-text">ENTER A POSITIVE NUMBER GREATER THAN ZERO</h5>
+        <form>
+            <td><input class="income-input" placeholder="$$$" type="text" name="itemConsumption"
+                    onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
+            </td>
+        </form>
+
+    </div>
+    </div>
+
+    <div id="home">
+        <h1>How much could you sell your 🏡(s) for today?</h1>
+        <h5 class="hint-text">ENTER ZERO IF YOU DON'T OWN ANY REAL ESTATE</h5>
+
+        <form>
+            <td><input class="home-input" placeholder="$$$" type="text" name="itemConsumption"
+                    onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
+            </td>
+        </form>
+
+    </div>
+
+    <!-- Button trigger modal -->
+    <div id="results-div">
+        <button id="results" type="button" class="btn btn-primary" data-toggle="modal"
+            data-target="#exampleModalCenter">
+            See Where I Rank
+        </button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLongTitle"><a id="clientName"></a> here's where you rank:</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <div class="modal-body">
 
-        <div id="processing">
-            <button id="seeResults">💰See my results 💰</button>
+                    <!-- spinner -->
+                    <div id="spinner" class="wrapper">
+                            <svg class="hourglass" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 206"
+                                preserveAspectRatio="none">
+                                <path class="middle"
+                                    d="M120 0H0v206h120V0zM77.1 133.2C87.5 140.9 92 145 92 152.6V178H28v-25.4c0-7.6 4.5-11.7 14.9-19.4 6-4.5 13-9.6 17.1-17 4.1 7.4 11.1 12.6 17.1 17zM60 89.7c-4.1-7.3-11.1-12.5-17.1-17C32.5 65.1 28 61 28 53.4V28h64v25.4c0 7.6-4.5 11.7-14.9 19.4-6 4.4-13 9.6-17.1 16.9z" />
+                                <path class="outer"
+                                    d="M93.7 95.3c10.5-7.7 26.3-19.4 26.3-41.9V0H0v53.4c0 22.5 15.8 34.2 26.3 41.9 3 2.2 7.9 5.8 9 7.7-1.1 1.9-6 5.5-9 7.7C15.8 118.4 0 130.1 0 152.6V206h120v-53.4c0-22.5-15.8-34.2-26.3-41.9-3-2.2-7.9-5.8-9-7.7 1.1-2 6-5.5 9-7.7zM70.6 103c0 18 35.4 21.8 35.4 49.6V192H14v-39.4c0-27.9 35.4-31.6 35.4-49.6S14 81.2 14 53.4V14h92v39.4C106 81.2 70.6 85 70.6 103z" />
+                            </svg>
+                    </div>
+                    <div>
+                            <p>The median income in your zipcode is <a id="showResults"></a></p>
+                            <p>Your income is in the <a id="percentile"></a> of your zipcode</p>
+                    </div>
+                        
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="play-again" type="button" class="btn btn-primary">Play Again!</button>
+                </div>
+            </div>
         </div>
-        <!-- <span id="TextOutput">Return message to user</span> -->
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-                <script src="scripts.js"></script>
-               
-            </body>
-       
+    </div>
+
+    <!-- <div id="credits">Created by 👩🏼‍💻<a href="https://sarahmcq.com/" target="_blank">SarahMcQ</a></div> -->
+
+    <!-- <div id="processing">
+        <button id="seeResults">💰See my results 💰</button>
+    </div> -->
+    <!-- <span id="TextOutput">Return message to user</span> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="scripts.js"></script>
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+</body>
